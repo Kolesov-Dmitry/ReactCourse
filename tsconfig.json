@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "es6",       
+    "target": "es5",    
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
+  },
+  
+  "include": [
+    "src"
+  ],
+
+  "exclude": [
+    "node_modules"
+  ]
+}

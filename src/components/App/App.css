@@ -1,0 +1,25 @@
+.container {
+    margin: 0rem 1rem;
+}
+
+.btn {
+    padding: 0 1rem;    
+    height: 2.5rem;
+    
+    color: #1976D2;
+    font-size: 1rem;
+    font-family: "Segoe UI";
+    
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid #1976D2;
+    
+    cursor: pointer;    
+
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn:hover {    
+    color: white;    
+    background-color: #1976D2;    
+  }
