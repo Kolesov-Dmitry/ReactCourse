@@ -1,0 +1,18 @@
+.message {    
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #ddd;
+  width: 14rem;  
+  text-align: right;
+  font: 1em 'Segoe UI', sans-serif;
+}
+
+.message.income {
+  background-color: rgb(255, 220, 106);
+  text-align: left;
+}
+
+.message__author {
+  font: 0.8em 'Segoe UI', sans-serif;
+  padding-bottom: 0.5rem;
+}

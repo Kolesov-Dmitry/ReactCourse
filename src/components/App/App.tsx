@@ -1,7 +1,8 @@
 import React from 'react';
 import { FC, useState } from 'react';
 
-import { Messages } from '../Messages';
+import { MessageField } from '../Messages';
+import { AddMessageFunc, MessageData } from '../../data';
 
 import './App.css';
 
@@ -9,26 +10,40 @@ export const App: FC<{}> = () => {
   // Создаю состояние компонента, содержащее массив сообщений.
   // Вызов setMessages рективно изменит содержимое messages,
   // что приведёт к перерисовке компонента.
-  const [messages, setMessages] = useState<string[]>(['First', 'Second']);
+  const [messages, setMessages] = useState<MessageData[]>([]);
+
+  // Функция добавляет новое сообщение
+  // Потом я её пробрасываю как callback в компонент MessageField
+  const appendMessage: AddMessageFunc = (author: string, text: string, income: boolean) => {
+    setMessages([
+      ...messages, 
+      {
+        author,
+        text,
+        income,
+      } as MessageData
+    ]);
+  }
 
   // Обработчик нажатий на кнопку "Добавить"
   // Помещает новое сообщенгие в массив сообщений
   const onAppendBtnClicked = () => {
-    const msgs = [...messages, 'Нормально'];
-    setMessages(msgs);
+    appendMessage('User', 'Как дела?', false);
   };
 
   return (
     <div 
       id='app' 
       className='container'
-    >
-      <h2>Hello from React</h2>
+    >      
       <button
         id='appendBtn'
         className='btn'
         onClick={ onAppendBtnClicked }>Добавить</button>
-      <Messages messages={ messages } />
+      <MessageField 
+        messages={ messages } 
+        appendMessage={ appendMessage }
+      />
     </div>
   );
 };
