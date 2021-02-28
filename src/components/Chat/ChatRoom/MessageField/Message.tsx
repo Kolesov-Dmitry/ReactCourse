@@ -1,9 +1,8 @@
-import React from 'react';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import './Message.css';
 
-import { MessageData } from '../../data';
+import { MessageData } from '../../../../data';
 
 export const Message: FC<MessageData> = ({ author, text, income }) => {
   return (

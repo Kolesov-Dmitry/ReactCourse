@@ -1,0 +1,8 @@
+header {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  position: sticky;
+  height: 4rem;
+  background-color: #35A4FC;  
+}

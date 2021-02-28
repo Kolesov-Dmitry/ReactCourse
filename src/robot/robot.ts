@@ -3,12 +3,12 @@ import { AddMessageFunc } from '../data';
 export class Robot { 
   // properties 
   addMessage: AddMessageFunc
-  messages: string[]
+  answers: string[]
 
   constructor(addMessage: AddMessageFunc) {
     this.addMessage = addMessage;
 
-    this.messages = [
+    this.answers = [
       'Нормально!',
       'Вроде ничего',
       'Бывало и получше',
@@ -29,8 +29,8 @@ export class Robot {
 
   // Случайно выбирает ответ на сообщение пользователя
   private pickTheAnswer(): string {
-    const idx: number = Math.floor(Math.random() * this.messages.length);
+    const idx: number = Math.floor(Math.random() * this.answers.length);
 
-    return this.messages[idx];
+    return this.answers[idx];
   }
 }
