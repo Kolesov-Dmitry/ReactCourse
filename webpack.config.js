@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const path = require('path');
 
 const outputPath = path.resolve(__dirname, 'dist');
@@ -6,7 +8,14 @@ const outputPath = path.resolve(__dirname, 'dist');
 module.exports = {  
   entry: './src/index.tsx',
   mode: 'development',
-  
+    
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/assets/index.html'
+    }),
+    new MiniCssExtractPlugin(),
+  ],
+
   module: {
     rules: [
       // TypeScript
@@ -18,8 +27,16 @@ module.exports = {
       // CSS стили
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      // Для подгрузки шрифтов
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        },        
+      }
     ],
   },
 
@@ -27,12 +44,6 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),    
     port: 3000,
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/assets/index.html'
-    }),
-  ],
 
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.css'],
