@@ -8,10 +8,11 @@ import './MessageInput.css';
 
 // Входные параметры MessageInput
 type MessageInputProps = {
+  chatId: number
   appendMessage: AddMessageFunc
 }
 
-export const MessageInput: FC<MessageInputProps> = ({ appendMessage }) => {
+export const MessageInput: FC<MessageInputProps> = ({ chatId, appendMessage }) => {
   // Сообщение, введённое пользователем
   const [message, setMessage] = useState<string>('');
 
@@ -34,7 +35,7 @@ export const MessageInput: FC<MessageInputProps> = ({ appendMessage }) => {
     if (message.length === 0) return;
 
     // Заряжаю сообщение и очищаю поле ввода
-    appendMessage('User', message, false);
+    appendMessage(chatId, 'User', message, false);
     setMessage('');
   }
 

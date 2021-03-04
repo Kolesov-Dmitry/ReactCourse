@@ -3,10 +3,12 @@ import { AddMessageFunc } from '../data';
 export class Robot { 
   // properties 
   addMessage: AddMessageFunc
+  chatId: number
   answers: string[]
 
-  constructor(addMessage: AddMessageFunc) {
+  constructor(chatId: number, addMessage: AddMessageFunc) {
     this.addMessage = addMessage;
+    this.chatId = chatId;
 
     this.answers = [
       'Нормально!',
@@ -20,6 +22,7 @@ export class Robot {
   answer() {
     setTimeout(() => {
       this.addMessage(
+        this.chatId,
         'Robot', 
         this.pickTheAnswer(), 
         true

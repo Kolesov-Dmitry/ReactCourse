@@ -2,3 +2,8 @@
   min-width: 15rem;
   box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.3);
 }
+
+.chat-list a {
+  text-decoration: none;
+  color: black;
+}

@@ -7,21 +7,25 @@ import './MessageField.css';
 
 // Тип данных, описывающий входные параметры компонета Messages
 type MessageFieldProps = {
-  messages: MessageData[]  // массив с сообщениями  
+  messages: Map<number, MessageData>
+  messageIds: number[]
 }
 
-export const MessageField : FC<MessageFieldProps> = ({ messages }) => {  
+export const MessageField : FC<MessageFieldProps> = ({ messages, messageIds }) => {  
   return (
     <div className='chat-room__field'>
       {
-        messages.map((msg, idx) => (
-          <Message 
-            key={ idx } 
-            author={ msg.author } 
-            text={ msg.text }
-            income={ msg.income }
-          />
-        ))
+        messageIds.map(msgId => {
+          const msg = messages.get(msgId);
+          return (
+            <Message 
+              key={ msgId } 
+              author={ msg?.author || '' } 
+              text={ msg?.text || '' }
+              income={ msg?.income || false }
+            />
+          )
+        })
       }
     </div>
   );

@@ -1,6 +1,7 @@
 .chat-room__field {
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex: 1 1 100%;  
   overflow-x: hidden;
   overflow-y: scroll;
