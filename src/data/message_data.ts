@@ -8,4 +8,4 @@ export type MessageData = {
 // Сигнатура функции ответа на сообщение
 // Не очень хорошо, что она лежит тут, 
 // но пока я не придумал куда ёё лучше запихать...
-export type AddMessageFunc = (author: string, text: string, income: boolean) => void;
+export type AddMessageFunc = (chatId: number, author: string, text: string, income: boolean) => void;

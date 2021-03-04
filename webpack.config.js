@@ -36,6 +36,10 @@ module.exports = {
         options: {
           name: 'fonts/[name].[ext]',
         },        
+      },
+      {
+        test: /\.png$/,
+        loader: 'file-loader'        
       }
     ],
   },
@@ -46,7 +50,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.css'],
+    extensions: ['.tsx', '.ts', '.js', '.css', '.png'],
   },
 
   output: {

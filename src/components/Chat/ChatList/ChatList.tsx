@@ -6,19 +6,20 @@ import { ChatListItem } from './ChatListItem';
 import './ChatList.css';
 
 type ChatListProps = {
-  rooms: string[]
+  chats: number[]
 }
 
 // Реализует список комнат
-export const ChatList: FC<ChatListProps> = ({ rooms }) => {
+export const ChatList: FC<ChatListProps> = ({ chats }) => {
   return (
     <List component='nav' className="chat-list">
       {
-        rooms.map((title: string) => {
+        chats.map((chatId: number) => {
           return (
-            <ChatListItem 
-              key={ title }
-              title={ title } 
+            <ChatListItem              
+              key={ chatId }
+              id={ chatId }
+              title={ 'Комната ' + chatId } 
             />
           );
         })

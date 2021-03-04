@@ -1,8 +1,26 @@
 header {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding-left: 1rem;
   position: sticky;
   height: 4rem;
   background-color: #35A4FC;  
 }
+
+header a, .link {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;  
+  cursor: pointer;
+}
+
+header .sep {
+  display: inline;
+  width: 2px;
+  height: 30px;
+  background-color: #fff;
+  margin: 0 1rem;
+}
+

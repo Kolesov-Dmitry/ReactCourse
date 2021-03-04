@@ -8,18 +8,19 @@ import { Robot } from '../../../robot';
 import './ChatRoom.css';
 
 type ChatRoomProps = {
-  roomName: string
-  messages: MessageData[]  // массив с сообщениями
+  chatId: number
+  messages: Map<number, MessageData>
+  messageIds: number[]
   appendMessage: AddMessageFunc
 }
 
-export const ChatRoom: FC<ChatRoomProps> = ({ messages, appendMessage }) => {
+export const ChatRoom: FC<ChatRoomProps> = ({ chatId, messages, messageIds, appendMessage }) => {
   // Робот, который будет отвечать на сообщения
-  const robot = new Robot(appendMessage);
+  const robot = new Robot(chatId, appendMessage);
 
   // ответ Робота на сообщение пользователя
   const answerTheMessage = () => {
-    if (messages.length % 2 == 1) {      
+    if (messageIds.length % 2 == 1) {      
       robot.answer();
     }    
   }
@@ -27,12 +28,18 @@ export const ChatRoom: FC<ChatRoomProps> = ({ messages, appendMessage }) => {
   // Реагирую на изменение состояния messages  
   useEffect(() => {
     answerTheMessage();
-  }, [messages]);
+  }, [messageIds]);
 
   return (
-    <div className='chat-room'>
-      <MessageField messages={ messages } />
-      <MessageInput appendMessage={ appendMessage } />
+    <div className='chat-room'>      
+      <MessageField 
+        messages={ messages }
+        messageIds={ messageIds }
+      />
+      <MessageInput 
+        chatId={ chatId }
+        appendMessage={ appendMessage } 
+      />
     </div>
   )
 }
