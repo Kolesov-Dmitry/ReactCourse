@@ -1,29 +1,31 @@
 import React, { FC } from 'react';
 import { List } from '@material-ui/core';
 
+import { AddChatBar } from './AddChatBar';
 import { ChatListItem } from './ChatListItem';
 
 import './ChatList.css';
 
 type ChatListProps = {
-  chats: number[]
+  chats: { chatId: number, title: string }[]
 }
 
 // Реализует список комнат
 export const ChatList: FC<ChatListProps> = ({ chats }) => {
   return (
-    <List component='nav' className="chat-list">
+    <List component='nav' className='chat-list'>
       {
-        chats.map((chatId: number) => {
+        chats.map(({ chatId, title }) => {
           return (
             <ChatListItem              
               key={ chatId }
               id={ chatId }
-              title={ 'Комната ' + chatId } 
+              title={ title } 
             />
           );
         })
       }
+      <AddChatBar />
     </List>
   );
 }

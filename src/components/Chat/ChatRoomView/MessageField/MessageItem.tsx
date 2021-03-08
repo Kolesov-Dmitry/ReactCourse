@@ -1,10 +1,14 @@
 import React, { FC } from 'react';
 
-import './Message.css';
+import './MessageItem.css';
 
-import { MessageData } from '../../../../data';
+type MessageItemProps = {
+  income: boolean
+  author: string
+  text:   string  
+};
 
-export const Message: FC<MessageData> = ({ author, text, income }) => {
+export const MessageItem: FC<MessageItemProps> = ({ income, author, text }) => {
   return (
     <div className={ income ? 'message income' : 'message' }>
       <div className='message__author'>

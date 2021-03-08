@@ -2,22 +2,21 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Header.css';
+import ProfileImg from '../../assets/img/profile.png';
+import { useSelector } from 'react-redux';
+import { profileSelector } from '../../store';
 
-type HeaderProps = {
-    appendChat: () => void
-}
+export const Header: FC<{}> = () => {
+  const userName = useSelector(profileSelector.userName);
 
-export const Header: FC<HeaderProps> = ({ appendChat }) => {
-    return (
-        <header>
-            <Link to='/profile'>Профиль</Link>
-            <div className='sep'></div>
-            <div 
-                className='link'
-                onClick= { appendChat }
-            >
-                Новый чат
-            </div>
-        </header>
-    );
+  return (
+    <header>
+      <Link to='/profile'>
+      <div className='profile__img'>
+        <img src={ ProfileImg } alt={ userName } />
+      </div>
+        { userName }
+      </Link>
+    </header>
+  );
 }
