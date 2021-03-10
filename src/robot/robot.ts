@@ -1,13 +1,13 @@
-import { AddMessageFunc } from '../data';
+type SendMessageFunc = (chatId: number, author: string, text: string) => void;
 
 export class Robot { 
   // properties 
-  addMessage: AddMessageFunc
+  sendMessage: SendMessageFunc
   chatId: number
   answers: string[]
 
-  constructor(chatId: number, addMessage: AddMessageFunc) {
-    this.addMessage = addMessage;
+  constructor(chatId: number, sendMessage: SendMessageFunc) {
+    this.sendMessage = sendMessage;
     this.chatId = chatId;
 
     this.answers = [
@@ -21,11 +21,10 @@ export class Robot {
   // Отвечает на сообщение с задержкой в 1 сек.
   answer() {
     setTimeout(() => {
-      this.addMessage(
+      this.sendMessage(
         this.chatId,
         'Robot', 
-        this.pickTheAnswer(), 
-        true
+        this.pickTheAnswer()        
       );
     }, 1000);      
   }

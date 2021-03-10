@@ -2,14 +2,16 @@
   margin-top: 0.5rem;
   padding: 0.5rem;
   background-color: #ddd;
-  width: 14rem;  
+  min-width: 14rem;  
   text-align: right;
   font: 1em 'Segoe UI', sans-serif;
+  align-self: flex-end;
 }
 
 .message.income {
   background-color: rgb(255, 220, 106);
   text-align: left;
+  align-self: flex-start;
 }
 
 .message__author {

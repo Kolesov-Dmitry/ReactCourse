@@ -1,2 +1,2 @@
-export { ChatRoom } from './ChatRoom/ChatRoom';
+export { ChatRoomView } from './ChatRoomView/ChatRoomView';
 export { ChatList } from './ChatList/ChatList';

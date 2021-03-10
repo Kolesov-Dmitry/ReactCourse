@@ -8,7 +8,7 @@ const outputPath = path.resolve(__dirname, 'dist');
 module.exports = {  
   entry: './src/index.tsx',
   mode: 'development',
-    
+
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/assets/index.html'
@@ -45,7 +45,8 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),    
+    contentBase: path.join(__dirname, 'dist'),
+    historyApiFallback: true,
     port: 3000,
   },
 

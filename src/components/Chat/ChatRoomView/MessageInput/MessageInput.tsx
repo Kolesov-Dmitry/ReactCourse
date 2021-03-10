@@ -2,19 +2,27 @@ import React, { FC, useState, ChangeEvent } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 
-import { AddMessageFunc } from '../../../../data';
-
 import './MessageInput.css';
 
 // Входные параметры MessageInput
 type MessageInputProps = {
-  chatId: number
-  appendMessage: AddMessageFunc
-}
+  chatId: number;
+  sendMessage: (chatId: number, author: string, text: string) => void;
+};
 
-export const MessageInput: FC<MessageInputProps> = ({ chatId, appendMessage }) => {
+export const MessageInput: FC<MessageInputProps> = ({ chatId, sendMessage }) => {
   // Сообщение, введённое пользователем
   const [message, setMessage] = useState<string>('');
+
+  // Отправляет сообщение
+  const sendUserMessage = () => {
+    // Ничего не отправляею, если сообщение пустое
+    if (message.length === 0) return;
+
+    // Заряжаю сообщение и очищаю поле ввода
+    sendMessage(chatId, 'User', message);
+    setMessage('');
+  }
 
   // Обработчик ввода в текстовое поле
   // Сохраняет введённый текст в состояние объекта
@@ -25,18 +33,8 @@ export const MessageInput: FC<MessageInputProps> = ({ chatId, appendMessage }) =
   // При нажатии на Enter отпавляет введённое сообщение
   const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      sendMessage();
+      sendUserMessage();
     }
-  }
-
-  // Отправляет сообщение
-  const sendMessage = () => {
-    // Ничего не отправляею, если сообщение пустое
-    if (message.length === 0) return;
-
-    // Заряжаю сообщение и очищаю поле ввода
-    appendMessage(chatId, 'User', message, false);
-    setMessage('');
   }
 
   return (
@@ -57,7 +55,7 @@ export const MessageInput: FC<MessageInputProps> = ({ chatId, appendMessage }) =
         variant='text'
         color='primary'
         title='Отправить'
-        onClick={ sendMessage }
+        onClick={ sendUserMessage }
       >
         <SendIcon />
       </Button>
