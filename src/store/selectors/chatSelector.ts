@@ -1,9 +1,9 @@
-import { StoreData } from "../store";
-import { Message } from "../types";
+import { Message, StoreData } from "../types";
 
 type ChatList = {
   chatId: number;
   title: string;
+  income: number;
 };
 
 export const chatSelector = {
@@ -12,7 +12,8 @@ export const chatSelector = {
     return Array.from(store.chat.chats).map(([ chatId, chatRoom ]) => (
       { 
         chatId: chatId, 
-        title: chatRoom.title 
+        title: chatRoom.title,
+        income: chatRoom.income
       })
     )
   },

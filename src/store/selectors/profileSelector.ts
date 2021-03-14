@@ -1,4 +1,4 @@
-import { StoreData } from "../store";
+import { StoreData } from "../types";
 
 export const profileSelector = {
   // Возвращает имя пользователя

@@ -8,11 +8,12 @@ import './MessageField.css';
 
 // Тип данных, описывающий входные параметры компонета Messages
 type MessageFieldProps = {
-  messages: Message[]
-  userName: string
+  chatId:   number;
+  messages: Message[];
+  userName: string;
 }
 
-export const MessageField : FC<MessageFieldProps> = ({ messages, userName }) => {
+export const MessageField : FC<MessageFieldProps> = ({ chatId, messages, userName }) => {
   const chatFieldRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,6 +32,8 @@ export const MessageField : FC<MessageFieldProps> = ({ messages, userName }) => 
           return (
             <MessageItem            
               key={ msg.id }
+              chatId={ chatId }
+              msgId={ msg.id }
               income={ msg.author !== userName }
               author={ msg.author }
               text={ msg.text }
