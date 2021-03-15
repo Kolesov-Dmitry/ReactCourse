@@ -7,7 +7,7 @@ import { ChatListItem } from './ChatListItem';
 import './ChatList.css';
 
 type ChatListProps = {
-  chats: { chatId: number, title: string }[]
+  chats: { chatId: number, title: string, income: number }[]
 }
 
 // Реализует список комнат
@@ -15,12 +15,13 @@ export const ChatList: FC<ChatListProps> = ({ chats }) => {
   return (
     <List component='nav' className='chat-list'>
       {
-        chats.map(({ chatId, title }) => {
+        chats.map(({ chatId, title, income }) => {
           return (
             <ChatListItem              
               key={ chatId }
               id={ chatId }
-              title={ title } 
+              title={ title }
+              income={ income }
             />
           );
         })

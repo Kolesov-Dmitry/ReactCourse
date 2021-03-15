@@ -1,6 +1,10 @@
 import React, { FC, useState, ChangeEvent } from 'react';
 import { TextField, Button } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+
 import SendIcon from '@material-ui/icons/Send';
+
+import { profileSelector } from '../../../../store';
 
 import './MessageInput.css';
 
@@ -14,13 +18,15 @@ export const MessageInput: FC<MessageInputProps> = ({ chatId, sendMessage }) => 
   // Сообщение, введённое пользователем
   const [message, setMessage] = useState<string>('');
 
+  const userName = useSelector(profileSelector.userName);
+
   // Отправляет сообщение
   const sendUserMessage = () => {
     // Ничего не отправляею, если сообщение пустое
     if (message.length === 0) return;
 
     // Заряжаю сообщение и очищаю поле ввода
-    sendMessage(chatId, 'User', message);
+    sendMessage(chatId, userName, message);
     setMessage('');
   }
 
