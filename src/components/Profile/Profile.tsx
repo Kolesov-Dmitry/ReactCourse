@@ -27,7 +27,7 @@ export const Profile: FC<{}> = () => {
   const onEditKeyPressed = (event: KeyboardEvent<HTMLInputElement>) => {    
     if (event.key === 'Enter') {
       editRef.current && dispatch(
-        profileActions.setUserName(editRef.current.value)
+        profileActions.postUserName(editRef.current.value)
       );
 
       setEditMode(false);

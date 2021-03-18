@@ -1,38 +1,37 @@
-import { RouterState } from 'connected-react-router';
-
-import { ChatStoreData, ProfileStoreData } from './reducers';
-
 // Типы Action'ов
-export enum ActionType {
-  ADD_CHAT = '@@chat/ADD_CHAT',
-  SEND_MESSAGE = '@@chat/SEND_MESSAGE',
+export enum ActionType {     
+  FETCH_CHATS = '@@chat/FETCH_CHATS',
+  FETCH_CHATS_SUCCESS = '@@chat/FETCH_CHATS_SUCCESS',
+  FETCH_CHATS_FAILED = '@@chat/FETCH_CHATS_FAILED',
+
+  FETCH_MESSAGES = '@@chat/FETCH_MESSAGES',
+  FETCH_MESSAGES_SUCCESS = '@@chat/FETCH_MESSAGES_SUCCESS',
+  FETCH_MESSAGES_FAILED = '@@chat/FETCH_MESSAGES_FAILED',
+
+  POST_MESSAGE = '@@chat/POST_MESSAGE',
+  POST_MESSAGE_SUCCESS = '@@chat/POST_MESSAGE_SUCCESS',
+  POST_MESSAGE_FAILED = '@@chat/POST_MESSAGE_FAILED',
+
+  DELETE_MESSAGE = '@@chat/DELETE_MESSAGE',
+  DELETE_MESSAGE_SUCCESS = '@@chat/DELETE_MESSAGE_SUCCESS',
+  DELETE_MESSAGE_FAILED = '@@chat/DELETE_MESSAGE_FAILED',
+
+  POST_CHAT = '@@chat/POST_CHAT',
+  POST_CHAT_SUCCESS = '@@chat/POST_CHAT_SUCCESS',
+  POST_CHAT_FAILED = '@@chat/POST_CHAT_FAILED',
 
   DELETE_CHAT = '@@chat/DELETE_CHAT',
-  DELETE_MESSAGE = '@@chat/DELETE_MESSAGE',
-  
+  DELETE_CHAT_SUCCESS = '@@chat/DELETE_CHAT_SUCCES',
+  DELETE_CHAT_FAILED = '@@chat/DELETE_CHAT_FAILED',
+
   ADD_INCOME_MESSAGE = '@@chat/ADD_INCOME_MESSAGE',
   RESET_INCOME_MESSAGES = '@@chat/RESET_INCOME_MESSAGES',
+  
+  FETCH_PROFILE = '@@profile/FETCH_PROFILE',
+  FETCH_PROFILE_SUCCESS = '@@profile/FETCH_PROFILE_SUCCESS',
+  FETCH_PROFILE_FAILED = '@@profile/FETCH_PROFILE_FAILED',
 
-
-  SET_USER_NAME = '@@profile/SET_USER_NAME',
-};
-
-// Тип данных, описывающий одно сообщение
-export type Message = {
-  id:     number  // Id сообщения
-  author: string  // Автор сообщения
-  text:   string  // Текст сообщения  
-};
-
-// Тип данных описывающий чат-комнату
-export type ChatRoom = {
-  title: string        // Имя комнаты
-  messages: Message[]  // Сообщения
-  income: number;      // Количество непрочитанных сообщений
-};
-
-export type StoreData = {
-  chat: ChatStoreData;
-  profile: ProfileStoreData;
-  router: RouterState<any>;
+  POST_USER_NAME = '@@profile/POST_USER_NAME',
+  POST_USER_NAME_SUCCESS = '@@profile/POST_USER_NAME_SUCCESS',
+  POST_USER_NAME_FAILED = '@@profile/POST_USER_NAME_FAILED',
 };

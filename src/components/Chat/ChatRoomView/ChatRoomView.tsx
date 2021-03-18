@@ -19,7 +19,7 @@ export const ChatRoomView: FC<ChatRoomViewProps> = ({ chatId }) => {
   
   const dispatch = useDispatch();
   const sendMessage = (chatId: number, author: string, text: string) => {
-    dispatch(chatActions.sendMessage(chatId, author, text));
+    dispatch(chatActions.postMessage(chatId, author, text));
   };
 
   return (

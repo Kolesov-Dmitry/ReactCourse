@@ -16,7 +16,7 @@ export const AddChatBar: FC<{}> = () => {
 
   // Метод диспатчит action ADD_CHAT в store
   const addChat = (title: string) => {
-    dispatch(chatActions.addChat(title));
+    dispatch(chatActions.postChat(title));
   };
 
   // Обработчик ввода в текстовое поле

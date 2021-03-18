@@ -1,6 +1,7 @@
 import { Middleware } from 'redux';
-import { StoreData, ActionType } from '../types';
-import { SendMessageAction, chatActions } from '../actions/chatActions';
+import { ActionType } from '../types';
+import { chatActions, PostMessageSuccessAction } from '../actions/chatActions';
+import { StoreData } from '../store';
 
 const answers: string[] = [
   'Нормально!',
@@ -17,14 +18,14 @@ const pickTheAnswer = (): string => {
 
 export const messageMiddleware: Middleware<{}, StoreData> = (store) => (next) => (action) => {
   switch (action.type) {
-    case ActionType.SEND_MESSAGE: {
+    case ActionType.POST_MESSAGE_SUCCESS: {
       const state = store.getState();
-      const msgAction = action as SendMessageAction;
+      const msgAction = action as PostMessageSuccessAction;
 
       if (msgAction.payload.author === state.profile.userName) {      
         setTimeout(() => {
           store.dispatch(
-            chatActions.sendMessage(
+            chatActions.postMessage(
               msgAction.payload.chatId, 
               'Robot', 
               pickTheAnswer()
