@@ -6,15 +6,9 @@ import { ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction, Badge, M
 import DraftsIcon from '@material-ui/icons/Drafts';
 import MailIcon from '@material-ui/icons/Message';
 
-import { chatActions } from '../../../store';
+import { chatActions, ChatRoom } from '../../../store';
 
-type ChatListItemProps = {
-  id: number;
-  title: string;
-  income: number;
-}
-
-export const ChatListItem: FC<ChatListItemProps> = ({ id, title, income }) => {
+export const ChatListItem: FC<ChatRoom> = ({ chatId, title, income }) => {
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   const dispatch = useDispatch();
 
@@ -24,7 +18,7 @@ export const ChatListItem: FC<ChatListItemProps> = ({ id, title, income }) => {
 
   const onDeleteChatClick = () => {
     dispatch(
-      chatActions.deleteChat(id)
+      chatActions.deleteChat(chatId)
     );
   }
 
@@ -38,7 +32,7 @@ export const ChatListItem: FC<ChatListItemProps> = ({ id, title, income }) => {
 
   return (
     <>
-      <Link to={ '/chat/' + id + '/' }>
+      <Link to={ '/chat/' + chatId + '/' }>
         <ListItem          
           onContextMenu={ onItemContentMenu }          
           button

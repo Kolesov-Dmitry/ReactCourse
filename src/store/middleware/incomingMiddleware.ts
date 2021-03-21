@@ -1,8 +1,9 @@
 import { Middleware } from 'redux';
 import { LOCATION_CHANGE } from 'connected-react-router';
 
-import { StoreData, ActionType } from '../types';
-import { SendMessageAction, chatActions } from '../actions/chatActions';
+import { ActionType } from '../types';
+import { chatActions, PostMessageSuccessAction } from '../actions/chatActions';
+import { StoreData } from '../store';
 
 // Вытаскивает chatId из route /chat/<chatId>
 const exstractChatId = (path: string): number => {
@@ -16,8 +17,8 @@ export const incomingMiddleware: Middleware<{}, StoreData> = (store) => (next) =
   const state = store.getState();
 
   switch (action.type) {
-    case ActionType.SEND_MESSAGE: {      
-      const msgAction = action as SendMessageAction;
+    case ActionType.POST_MESSAGE_SUCCESS: {      
+      const msgAction = action as PostMessageSuccessAction;
 
       const currentChatId = exstractChatId(state.router.location.pathname);
       

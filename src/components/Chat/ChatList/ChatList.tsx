@@ -4,24 +4,24 @@ import { List } from '@material-ui/core';
 import { AddChatBar } from './AddChatBar';
 import { ChatListItem } from './ChatListItem';
 
+import { ChatRoom } from '../../../store';
+
 import './ChatList.css';
 
 type ChatListProps = {
-  chats: { chatId: number, title: string, income: number }[]
-}
+  chats: ChatRoom[]
+};
 
 // Реализует список комнат
 export const ChatList: FC<ChatListProps> = ({ chats }) => {
   return (
     <List component='nav' className='chat-list'>
       {
-        chats.map(({ chatId, title, income }) => {
+        chats.map((chat) => {
           return (
             <ChatListItem              
-              key={ chatId }
-              id={ chatId }
-              title={ title }
-              income={ income }
+              key={ chat.chatId }
+              { ...chat }
             />
           );
         })

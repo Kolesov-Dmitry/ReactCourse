@@ -13,9 +13,10 @@ export const initialState: ProfileStoreData = {
 export const profileReducer = (state = initialState, action: ProfileActions): ProfileStoreData => {  
 
   switch (action.type) {
-    case ActionType.SET_USER_NAME: {      
+    case ActionType.POST_USER_NAME_SUCCESS:
+    case ActionType.FETCH_PROFILE_SUCCESS: {      
       // Обновляю state
-      return { userName: action.payload.name };
+      return { userName: action.payload.userName };
     }
     
     default:
