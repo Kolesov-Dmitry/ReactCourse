@@ -5,5 +5,11 @@
   flex: 1 1 100%;  
   overflow-x: hidden;
   overflow-y: scroll;
-  padding: 0 20%;    
+  padding: 0 10%;    
+}
+
+@media (max-width: 600px) {
+  .chat-room__field {    
+    padding: 0 5%;    
+  } 
 }

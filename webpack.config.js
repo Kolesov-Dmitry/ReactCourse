@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 const path = require('path');
 
@@ -14,6 +15,13 @@ module.exports = {
       template: 'src/assets/index.html'
     }),
     new MiniCssExtractPlugin(),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/assets/manifest.json', to: 'manifest.json' },
+        { from: 'src/service-worker.js', to: 'service-worker.js' },
+        { from: 'src/assets/img/icons_chat_144px.png', to: 'img/icons_chat_144px.png' }
+      ],
+    }),
   ],
 
   module: {
@@ -57,6 +65,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: outputPath,
-    publicPath: '/dist/',
+    //publicPath: path.join(__dirname, 'dist'),
   },
 };

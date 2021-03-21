@@ -8,7 +8,12 @@ import MailIcon from '@material-ui/icons/Message';
 
 import { chatActions, ChatRoom } from '../../../store';
 
-export const ChatListItem: FC<ChatRoom> = ({ chatId, title, income }) => {
+type Props = {
+  room: ChatRoom,
+  clickHandler: () => void
+}
+
+export const ChatListItem: FC<Props> = ( { room, clickHandler } ) => {
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   const dispatch = useDispatch();
 
@@ -18,7 +23,7 @@ export const ChatListItem: FC<ChatRoom> = ({ chatId, title, income }) => {
 
   const onDeleteChatClick = () => {
     dispatch(
-      chatActions.deleteChat(chatId)
+      chatActions.deleteChat(room.chatId)
     );
   }
 
@@ -32,16 +37,16 @@ export const ChatListItem: FC<ChatRoom> = ({ chatId, title, income }) => {
 
   return (
     <>
-      <Link to={ '/chat/' + chatId + '/' }>
+      <Link to={ '/chat/' + room.chatId + '/' } onClick={ clickHandler }>
         <ListItem          
           onContextMenu={ onItemContentMenu }          
           button
         >
           <ListItemIcon><DraftsIcon /></ListItemIcon>
-          <ListItemText>{ title }</ListItemText>
+          <ListItemText>{ room.title }</ListItemText>
           <ListItemSecondaryAction>
             {
-              (income > 0) && <Badge badgeContent={ income } color="primary"><MailIcon color="disabled" /></Badge>
+              (room.income > 0) && <Badge badgeContent={ room.income } color="primary"><MailIcon color="disabled" /></Badge>
             }
           </ListItemSecondaryAction>
         </ListItem>

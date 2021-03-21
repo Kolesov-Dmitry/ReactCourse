@@ -29,7 +29,7 @@ export const Profile: FC<{}> = () => {
       editRef.current && dispatch(
         profileActions.postUserName(editRef.current.value)
       );
-
+      
       setEditMode(false);
     }
   }
@@ -53,7 +53,7 @@ export const Profile: FC<{}> = () => {
               focused
             />
         }
-      </div> 
+      </div>
     </div>
   )
 }
