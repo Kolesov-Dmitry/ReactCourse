@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,6 +11,7 @@ import { ChatList, ChatRoomView } from '../Chat';
 import { chatSelector, chatActions, profileActions } from '../../store';
 
 import './App.css';
+import { Drawer } from '@material-ui/core';
 
 export const App: FC<{}> = () => {
 
@@ -25,11 +26,21 @@ export const App: FC<{}> = () => {
   // Вытаскиваю список чатов из store
   const chats = useSelector(chatSelector.chats);
 
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  
+  const toogleShowMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
     <div id='app'>            
-      <Header />      
+      <Header toogleShowMenu={ toogleShowMenu } />
       <Layout>
-        <ChatList chats={ chats } />
+        <ChatList 
+          chats={ chats } 
+          showMenu={ showMenu }
+          setShowMenu={ setShowMenu }
+        />
         <Switch>
           <Route 
             exact 

@@ -9,5 +9,12 @@
   flex: 1 1 100%;
   padding-top: 10rem;
   font-size: 4rem;
-  color: #b7bbbb;
+  color: #b7bbbb;  
 }
+
+@media (max-width: 600px) {
+  .welcome {
+    font-size: 2rem;
+  }
+}
+

@@ -3,7 +3,7 @@ import { ProfileActions } from '../actions/profileActions';
 
 // Данные profile
 export type ProfileStoreData = {
-  userName: string
+  userName: string  // Имя пользователя
 }
 
 export const initialState: ProfileStoreData = {

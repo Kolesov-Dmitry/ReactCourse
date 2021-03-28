@@ -1,0 +1,15 @@
+{
+  "name": "Robochat",
+  "short_name": "Robochat",
+  "theme_color": "#2196f3",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/index.html",
+  "icons": [
+    {
+      "src": "img/icons_chat_144px.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}
